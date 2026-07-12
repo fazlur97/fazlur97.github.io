@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fazlur Rahman — Data Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4F6;
+    --paper-line:#D7DDE2;
+    --ink:#14213D;
+    --ink-soft:#4A5568;
+    --teal:#1F6F78;
+    --teal-dim:#E5EEEE;
+    --amber:#C98A2C;
+    --navy-panel:#101A30;
+    --navy-panel-line:#25344F;
+    --radius:2px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    min-height:100vh;
+  }
+
+  a{ color:var(--teal); }
+
+  /* ---------- Header ---------- */
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px 24px;
+    padding:28px 36px;
+    border-bottom:2px solid var(--ink);
+    background:var(--paper);
+  }
+
+  .name{
+    font-family:'Inter', sans-serif;
+    font-weight:700;
+    font-size:1.5rem;
+    letter-spacing:-0.02em;
+    color:var(--ink);
+  }
+  .name::before{
+    content:"faz@portfolio";
+    display:block;
+    font-size:0.68rem;
+    font-weight:500;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:4px;
+  }
+
+  .headline{
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+
+  .contact{
+    display:flex;
+    gap:20px;
+    font-family:'Inter', sans-serif;
+    font-size:0.85rem;
+  }
+  .contact a{
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:border-color .15s ease;
+  }
+  .contact a:hover, .contact a:focus-visible{
+    border-color:var(--teal);
+  }
+
+  /* ---------- Layout shell ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns:230px 1fr;
+    min-height:calc(100vh - 97px);
+  }
+
+  /* ---------- Sidebar ---------- */
+  nav.sidebar{
+    background:var(--navy-panel);
+    color:#C9D2DE;
+    padding:28px 0;
+    border-right:2px solid var(--ink);
+    overflow:hidden;
+  }
+  .sidebar-path{
+    font-family:'Inter', sans-serif;
+    font-size:0.72rem;
+    color:#6E84A6;
+    padding:0 24px 18px;
+    letter-spacing:0.03em;
+  }
+  .sidebar ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .sidebar li{ margin:0; }
+  .sidebar button{
+    all:unset;
+    box-sizing:border-box;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    padding:12px 24px;
+    font-family:'Inter', sans-serif;
+    font-size:0.92rem;
+    color:#C9D2DE;
+    cursor:pointer;
+    border-left:3px solid transparent;
+    transition:background .12s ease, border-color .12s ease, color .12s ease;
+  }
+  .sidebar button::before{
+    content:"›";
+    color:#4C5F80;
+    font-weight:700;
+    transition:color .12s ease;
+  }
+  .sidebar button:hover{
+    background:rgba(255,255,255,0.04);
+    color:#fff;
+  }
+  .sidebar button:focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:-2px;
+  }
+  .sidebar button[aria-current="true"]{
+    background:rgba(31,111,120,0.18);
+    border-left-color:var(--teal);
+    color:#fff;
+  }
+  .sidebar button[aria-current="true"]::before{
+    color:var(--amber);
+  }
+
+  /* ---------- Main content ---------- */
+  main{
+    padding:36px 44px 60px;
+  }
+
+  .breadcrumb{
+    font-family:'Inter', sans-serif;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    margin:0 0 22px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--paper-line);
+  }
+  .breadcrumb span{ color:var(--teal); }
+
+  .section-title{
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:1.6rem;
+    margin:0 0 6px;
+    color:var(--ink);
+  }
+  .section-sub{
+    color:var(--ink-soft);
+    font-size:0.95rem;
+    margin:0 0 30px;
+    max-width:640px;
+    line-height:1.5;
+  }
+
+  .card-grid{
+    display:grid;
+    gap:20px;
+  }
+
+  .group-heading{
+    font-size:0.78rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    margin:0 0 14px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--paper-line);
+  }
+  .group-heading:not(:first-child){
+    margin-top:36px;
+  }
+
+  .card{
+    background:#fff;
+    border:1px solid var(--paper-line);
+    border-left:3px solid var(--teal);
+    border-radius:var(--radius);
+    padding:22px 26px;
+  }
+  .card.status-progress{ border-left-color:var(--amber); }
+
+  .card-top{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:8px;
+  }
+  .card-top-text{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:8px 16px;
+    flex:1;
+    min-width:0;
+  }
+  .org-logo{
+    flex-shrink:0;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-weight:700;
+    font-size:0.85rem;
+  }
+  .card .meta{
+    font-family:'Inter', sans-serif;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+  .card p{
+    margin:0 0 14px;
+    color:#33394A;
+    line-height:1.55;
+    font-size:0.95rem;
+  }
+  .card ul{
+    margin:0 0 14px;
+    padding-left:18px;
+    color:#33394A;
+    line-height:1.55;
+    font-size:0.95rem;
+  }
+  .card ul li{ margin-bottom:6px; }
+
+  .card-img{
+    width:100%;
+    border-radius:2px;
+    margin-bottom:14px;
+    display:block;
+  }
+
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .tag{
+    font-family:'Inter', sans-serif;
+    font-size:0.72rem;
+    padding:3px 9px;
+    background:var(--teal-dim);
+    color:var(--teal);
+    border-radius:20px;
+  }
+  .badge{
+    font-family:'Inter', sans-serif;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    padding:3px 10px;
+    border-radius:20px;
+    background:#FBF0DC;
+    color:var(--amber);
+    border:1px solid #EBD9AF;
+  }
+
+  .card h3{
+    margin:0;
+    font-size:1.1rem;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .link-icon{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    color:var(--ink-soft);
+    background:var(--teal-dim);
+    flex-shrink:0;
+    transition:color .12s ease, background .12s ease;
+  }
+  .link-icon:hover, .link-icon:focus-visible{
+    color:#fff;
+    background:var(--teal);
+  }
+
+  /* ---------- Timeline ---------- */
+  .timeline-item{
+    display:grid;
+    grid-template-columns:1fr 24px 110px;
+    column-gap:20px;
+  }
+  .timeline-content{
+    padding-bottom:32px;
+  }
+  .timeline-content h3{
+    margin:6px 0 6px;
+    font-size:1.05rem;
+    font-weight:600;
+  }
+  .timeline-content p{
+    margin:0;
+    color:#33394A;
+    line-height:1.55;
+    font-size:0.92rem;
+  }
+  .timeline-type{
+    display:inline-block;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    padding:2px 9px;
+    border-radius:20px;
+    background:var(--teal-dim);
+    color:var(--teal);
+  }
+  .timeline-type.type-project{ background:#FBF0DC; color:var(--amber); }
+  .timeline-type.type-education{ background:#E7EAF3; color:#3B4C8C; }
+  .timeline-type.type-achievement{ background:#F1E4F0; color:#8C3B7E; }
+  .timeline-type.type-publication{ background:#E1EFE6; color:#2E7D4F; }
+
+  .timeline-marker{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .timeline-marker .dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--ink);
+    border:2px solid var(--paper);
+    box-shadow:0 0 0 2px var(--ink);
+    margin-top:6px;
+    flex-shrink:0;
+  }
+  .timeline-marker .line{
+    flex:1;
+    width:2px;
+    background:var(--paper-line);
+    margin-top:6px;
+  }
+  .timeline-item:last-child .timeline-marker .line{
+    display:none;
+  }
+
+  .timeline-date{
+    text-align:right;
+    font-weight:600;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    padding-top:6px;
+  }
+
+  @media (max-width:600px){
+    .timeline-item{
+      grid-template-columns:20px 1fr;
+      grid-template-areas:
+        "marker date"
+        "marker content";
+    }
+    .timeline-marker{ grid-area:marker; }
+    .timeline-date{ grid-area:date; text-align:left; padding-top:0; margin-bottom:4px; }
+    .timeline-content{ grid-area:content; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:760px){
+    .shell{ grid-template-columns:1fr; }
+    nav.sidebar{
+      border-right:none;
+      border-bottom:2px solid var(--ink);
+      padding:16px 0;
+    }
+    .sidebar ul{ display:flex; flex-wrap:wrap; }
+    .sidebar-path{ padding:0 16px 10px; }
+    .sidebar button{ padding:10px 16px; width:auto; }
+    main{ padding:28px 20px 50px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ transition:none !important; }
+  }
+
+  .fade{ animation:fadeIn .25s ease; }
+  @keyframes fadeIn{
+    from{ opacity:0; transform:translateY(4px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="name">Fazlur Rahman</div>
+    <div class="headline">Data Scientist — Machine Learning, Time Series Forecasting &amp; MLOps</div>
+  </div>
+  <div class="contact">
+    <a href="mailto:fazlur97@gmail.com">fazlur97@gmail.com</a>
+    <a href="https://linkedin.com/in/fazlur-r" target="_blank" rel="noopener">linkedin.com/in/fazlur-r</a>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="sidebar" aria-label="Portfolio sections">
+    <div class="sidebar-path">~/faz</div>
+    <ul id="nav-list">
+      <li><button data-section="projects" aria-current="true">projects</button></li>
+      <li><button data-section="education">education</button></li>
+      <li><button data-section="experience">experience</button></li>
+      <li><button data-section="achievement">achievement</button></li>
+      <li><button data-section="certifications">certifications</button></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+    <!-- populated by JS -->
+  </main>
+</div>
+
+<script>
+const data = {
+  projects: {
+    title: "Projects",
+    sub: "Selected data engineering and analytics builds — from live pipelines to work still in flight.",
+    items: [
+      {
+        title: "Manchester Airbnb Market Analytics Pipeline",
+        meta: "Personal project",
+        img: "https://raw.githubusercontent.com/fazlur97/airbnb-pricing-intelligence/refs/heads/main/screenshoots/Page1.png",
+        desc: "An end-to-end analytics pipeline built on real-world Manchester short-term rental data from Inside Airbnb. Raw listings are transformed through a layered dbt pipeline (staging → intermediate → mart), powered by DuckDB as the embedded analytical engine, and containerised in Docker for reproducibility. Parquet handles the interchange between DuckDB and the reporting layer, feeding an interactive Power BI dashboard covering pricing, occupancy, and neighbourhood-level trends.",
+        tags: ["dbt", "DuckDB", "Docker", "Power BI", "Parquet"]
+      },
+      {
+        title: "Stock Market Time Series Forecasting with Transformer Foundation Models",
+        meta: "MSc Final Thesis · University of Manchester",
+        img: "https://raw.githubusercontent.com/fazlur97/StockForecasting_TSFM/refs/heads/main/Results/Portfolio_Strategy_Plots/long_only_strategy_by_window.png",
+        link: "https://github.com/fazlur97/StockForecasting_TSFM",
+        desc: "Built a robust time series forecasting MLOps pipeline using PyTorch and Jupyter, with feature engineering to evaluate the zero-shot accuracy of transformer-based foundation models (Chronos, TimeFM, UniTS) on stock market data.",
+        tags: ["PyTorch", "Jupyter", "Chronos", "TimeFM", "UniTS", "MLOps"]
+      }
+    ]
+  },
+  education: {
+    title: "Education",
+    sub: "",
+    items: [
+      {
+        title: "MSc Data Science (Business and Management) — University of Manchester",
+        meta: "Sep 2024 – Sep 2025 · Distinction",
+        desc: "Built a robust time series forecasting MLOps pipeline using PyTorch, evaluating the zero-shot accuracy of transformer-based foundation models (Chronos, TimeFM, UniTS). Also designed an end-to-end predictive pipeline forecasting UK train passenger refund rates, applying logistic regression and correlation analysis before automating hyperparameter tuning via Azure AutoML.",
+        tags: ["Data Science", "MLOps", "PyTorch", "Distinction"]
+      },
+      {
+        title: "BSc Computer Science — Universitas Padjadjaran (UNPAD)",
+        meta: "Aug 2015 – Aug 2019 · Cum Laude",
+        desc: "Specialisation in Artificial Intelligence. Developed a high-accuracy face recognition system using Python and Scikit-learn, implementing Support Vector Machines for multi-class classification, achieving 98.94% accuracy.",
+        tags: ["Computer Science", "AI Specialisation", "Cum Laude"]
+      }
+    ]
+  },
+  experience: {
+    title: "Experience",
+    sub: "Five years across data engineering, QA automation, and analytics — Indonesia to the UK.",
+    groups: [
+      {
+        label: "Professional Experience",
+        items: [
+          {
+            title: "Samsung Electronics — Software Engineer (Data & Quality)",
+            meta: "Apr 2020 – Jun 2024 · Cikarang, Indonesia",
+            desc: null,
+            list: [
+              "Built a Python/Pandas pipeline automating daily software release categorisation across 50+ active device models, cutting processing time 90% (20 min → 2 min).",
+              "Designed a SQL-backed defect diagnostic tool and QA progress dashboard spanning a 70,000+ test case database.",
+              "Owned firmware release coordination for Indonesia/ASEAN markets, working with regional engineering teams to clear Google Android certification (CTS/GTS/STS/BVT)."
+            ],
+            tags: ["Python", "Pandas", "SQL", "ETL", "QA automation"]
+          },
+          {
+            title: "Unilever — Software Engineer Intern",
+            meta: "Nov 2019 – Jan 2020 · Cikarang, Indonesia",
+            desc: null,
+            list: [
+              "Built a Power BI production-defects dashboard; presented findings to management, who drove adoption across 10+ production managers.",
+              "Solo-built an internal web app (CodeIgniter + SQL) creating a centralised system for logging and resolving manufacturing issues, with OEE metrics and production-loss visualisation."
+            ],
+            tags: ["Power BI", "CodeIgniter", "SQL", "OEE"]
+          },
+          {
+            title: "Indonesia Institute of Science (LIPI) — Data Engineer, Research Assistant",
+            meta: "Jan 2018 – Mar 2018 · Bandung, Indonesia",
+            desc: null,
+            list: [
+              "Decoded raw Emotiv EEG headset data — the institute's first use of the device — and built Python (NumPy/SciPy) signal-cleaning and feature-engineering pipelines.",
+              "Fed processed EEG data into a TensorFlow model as a proof-of-concept for early Alzheimer's classification."
+            ],
+            tags: ["Python", "NumPy", "SciPy", "TensorFlow", "EEG"]
+          }
+        ]
+      },
+      {
+        label: "Other",
+        items: [
+          {
+            title: "Practicum Assistant — Universitas Padjadjaran",
+            meta: "2016 – Aug 2019 · Bandung, Indonesia",
+            desc: null,
+            list: [
+              "Facilitated hands-on practical sessions across artificial intelligence, soft computing, graphical computing, object-oriented programming, and robotics.",
+              "Maintained and troubleshot computer lab equipment and systems, ensuring a reliable and productive learning environment.",
+              "Evaluated tests and quizzes to support student learning and performance assessment."
+            ],
+            tags: ["Teaching Assistant", "AI", "Robotics", "OOP"]
+          },
+          {
+            title: "Lead of Talent and Interest Development — Informatics Student Association",
+            meta: "2016 – 2017 · Universitas Padjadjaran",
+            desc: null,
+            list: [
+              "Managed annual sport and art events, overseeing three internal sport groups and one art group.",
+              "Lifted sport and art talent potential, winning 10 faculty-level competitions.",
+              "Department received an award for the most cohesive department."
+            ],
+            tags: ["Leadership", "Event Management"]
+          }
+        ]
+      }
+    ]
+  },
+  achievement: {
+    title: "Achievement",
+    sub: "",
+    items: [
+      {
+        title: "Semi-finalist — Hult Prize, Norway",
+        meta: "2019",
+        desc: "Selected from 200,000 global teams to reach the semi-final of the international social business competition. Led technical architecture and UI/UX design for the team's mobile MVP as Lead Developer, and pitched the solution to global judges.",
+        tags: ["Lead Developer", "Mobile MVP", "Pitching"]
+      },
+      {
+        title: "Sensorless Synchronous Motors Classification Using Random Forest and Linear Support Vector Classifier",
+        meta: "Publication · October 2018",
+        desc: "IOP Conference Series: Earth and Environmental Science, Volume 248. First-author paper — designed and ran all experiments independently, applying Random Forest and Linear SVM to sensorless motor classification.",
+        tags: ["Random Forest", "SVM", "First author"]
+      }
+    ]
+  },
+  certifications: {
+    title: "Certifications",
+    sub: "Grouped by relevance, most recent first within each group.",
+    groups: [
+      {
+        label: "Cloud & Data",
+        items: [
+          { title:"Google Cloud Technical Series", meta:"Google · 20 Feb 2026", link:"https://www.credly.com/badges/85473f22-16e9-4f1b-89a1-9d78a2f6c1e1/", org:"Google", tags:["Google Cloud", "Cloud Fundamentals"] },
+          { title:"Databricks Fundamentals", meta:"Databricks · 30 Oct 2025", link:"https://credentials.databricks.com/facf2e9e-39a8-47d3-9a6c-8481ca4a2f24#acc.dsMctBX8", org:"Databricks", tags:["Databricks", "Lakehouse"] },
+          { title:"Fundamentals of Visualization & Design with Tableau", meta:"Coursera · 26 Nov 2025", link:"https://coursera.org/share/9829dfdae79d6a79664b3a43e1f20f81", org:"Coursera", tags:["Tableau", "Data Visualization"] },
+          { title:"AI Fundamentals", meta:"DataCamp · 9 Nov 2024", link:"https://www.datacamp.com/skill-verification/AIF0027750035589", org:"DataCamp", tags:["AI Concepts", "Machine Learning"] },
+          { title:"AZ-900: Azure Fundamentals", meta:"Microsoft · 4 Aug 2022", link:"https://www.credly.com/badges/256a50f6-2060-4533-860c-c9c28d80fc95/public_url", org:"Microsoft", tags:["Azure", "Cloud Fundamentals"] },
+          { title:"Database Design and Programming with SQL", meta:"Oracle · 19 Sep 2018", link:"https://drive.google.com/file/d/1gnaCsb1Rt8VhtZgZsCSIk5k5FZgJC5ns/view?usp=sharing", org:"Oracle", tags:["SQL", "Database Design"] }
+        ]
+      },
+      {
+        label: "General & Professional Development",
+        items: [
+          { title:"McKinsey Forward Program", meta:"McKinsey · 30 Jun 2026", link:"https://www.credly.com/badges/79e34b53-aa12-4e15-9dcb-df7357bfe7ab/public_url", org:"McKinsey", tags:["Business Strategy", "Leadership"] },
+          { title:"Fundamentals of Digital Marketing", meta:"Google · 12 Feb 2022", link:"https://drive.google.com/file/d/11dtVUVFlqFN7RkGV_ABMLEaacRyfqfwP/view?usp=sharing", org:"Google", tags:["Digital Marketing"] },
+          { title:"Microsoft Office Specialist: PowerPoint", meta:"Microsoft · 19 Nov 2017", link:"https://www.credly.com/badges/2f0d0545-8f9e-4883-968e-79f231772a27/public_url", org:"Microsoft", tags:["PowerPoint"] }
+        ]
+      }
+    ]
+  }
+};
+
+const timeline = [
+  { date:"Jul 2026", type:"Project", title:"AWS RAG Pipeline", desc:"Started building a retrieval-augmented generation pipeline on AWS (S3, Lambda, EventBridge, Bedrock). In progress.", inProgress:true },
+  { date:"May 2026", type:"Project", title:"Manchester Airbnb Market Analytics Pipeline", desc:"Built an end-to-end dbt + DuckDB pipeline on Manchester Airbnb listings, surfaced in an interactive Power BI dashboard." },
+  { date:"Sep 2024", type:"Education", title:"MSc Data Science — University of Manchester", desc:"Distinction. Sep 2024 – Sep 2025. Built transformer-based forecasting pipelines and an AutoML predictive pipeline." },
+  { date:"Apr 2020", type:"Experience", title:"Samsung Electronics — Software Engineer (Data & Quality)", desc:"Apr 2020 – Jun 2024. Automated release-data pipelines and built defect diagnostics across a 70,000+ test case database." },
+  { date:"Nov 2019", type:"Experience", title:"Unilever — Software Engineer Intern", desc:"Nov 2019 – Jan 2020. Built a Power BI defects dashboard and an internal CRUD web app for manufacturing issue tracking." },
+  { date:"Apr 2019", type:"Achievement", title:"Semi-finalist — Hult Prize, Norway", desc:"Selected from 200,000 global teams. Led technical architecture and UI/UX for the team's mobile MVP as Lead Developer." },
+  { date:"Oct 2018", type:"Publication", title:"IOP Conference Series Paper", desc:"First-author paper on sensorless synchronous motor classification using Random Forest and Linear SVM." },
+  { date:"Jan 2018", type:"Experience", title:"LIPI — Data Engineer, Research Assistant", desc:"Jan – Mar 2018. Built EEG signal-processing pipelines for an early Alzheimer's classification proof of concept." },
+  { date:"Aug 2015", type:"Education", title:"BSc Computer Science — Universitas Padjadjaran", desc:"Cum Laude. Aug 2015 – Aug 2019. Specialization in Artificial Intelligence." }
+];
+
+const main = document.getElementById('main-content');
+const buttons = document.querySelectorAll('.sidebar button');
+
+function render(sectionKey){
+  buttons.forEach(b => {
+    b.setAttribute('aria-current', b.dataset.section === sectionKey ? 'true' : 'false');
+  });
+
+  if(sectionKey === 'timeline'){
+    const rows = timeline.map(item => `
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <span class="timeline-type type-${item.type.toLowerCase()}">${item.type}</span>
+          <h3>${item.title}${item.inProgress ? ' <span class="badge">In progress</span>' : ''}</h3>
+          <p>${item.desc}</p>
+        </div>
+        <div class="timeline-marker"><span class="dot"></span><span class="line"></span></div>
+        <div class="timeline-date">${item.date}</div>
+      </div>
+    `).join('');
+
+    main.innerHTML = `
+      <p class="breadcrumb">~/faz/<span>timeline</span></p>
+      <h1 class="section-title">Timeline</h1>
+      <p class="section-sub">Everything below, laid out chronologically — most recent first.</p>
+      <div class="timeline fade">${rows}</div>
+    `;
+    return;
+  }
+
+  const section = data[sectionKey];
+
+  const orgColors = {
+    Google:"#4285F4", Databricks:"#FF3621", Coursera:"#0056D3",
+    DataCamp:"#1E874B", Microsoft:"#00A4EF", Oracle:"#F80000", McKinsey:"#003A70"
+  };
+
+  function cardHtml(item){
+    const statusClass = item.status === 'progress' ? ' status-progress' : '';
+    const badge = item.status === 'progress' ? '<span class="badge">In progress</span>' : '';
+    const body = item.desc
+      ? `<p>${item.desc}</p>`
+      : item.list
+      ? `<ul>${item.list.map(l => `<li>${l}</li>`).join('')}</ul>`
+      : '';
+    const tags = item.tags ? `<div class="tags">${item.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>` : '';
+    const image = item.img ? `<img src="${item.img}" alt="${item.title}" class="card-img">` : '';
+    const linkIcon = item.link ? `<a class="link-icon" href="${item.link}" target="_blank" rel="noopener" aria-label="Open link for ${item.title}" title="Open link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </a>` : '';
+    const orgLogo = item.org ? `<span class="org-logo" style="background:${orgColors[item.org] || 'var(--teal)'}">${item.org.charAt(0)}</span>` : '';
+
+    return `
+      <article class="card${statusClass}">
+        <div class="card-top">
+          ${orgLogo}
+          <div class="card-top-text">
+            <h3>${item.title}${linkIcon}</h3>
+            <span class="meta">${item.meta}</span>
+          </div>
+        </div>
+        ${badge}
+        ${image}
+        ${body}
+        ${tags}
+      </article>
+    `;
+  }
+
+  let bodyHtml;
+  if(section.groups){
+    bodyHtml = section.groups.map(group => `
+      <h2 class="group-heading">${group.label}</h2>
+      <div class="card-grid">${group.items.map(cardHtml).join('')}</div>
+    `).join('');
+  } else {
+    bodyHtml = `<div class="card-grid">${section.items.map(cardHtml).join('')}</div>`;
+  }
+
+  main.innerHTML = `
+    <p class="breadcrumb">~/faz/<span>${sectionKey}</span></p>
+    <h1 class="section-title">${section.title}</h1>
+    ${section.sub ? `<p class="section-sub">${section.sub}</p>` : ''}
+    <div class="fade">${bodyHtml}</div>
+  `;
+}
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => render(btn.dataset.section));
+});
+
+render('projects');
+</script>
+
+</body>
+</html>

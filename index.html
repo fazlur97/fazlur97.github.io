@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fazlur Rahman — Data Scientist</title>
+<title>Fazlur Rahman - Data Scientist</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23101A30'/%3E%3Ctext x='50' y='68' font-family='Arial, sans-serif' font-size='58' font-weight='700' fill='%231F6F78' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -426,7 +427,7 @@
 <header>
   <div>
     <div class="name">Fazlur Rahman</div>
-    <div class="headline">Data Scientist — Machine Learning, Time Series Forecasting &amp; MLOps</div>
+    <div class="headline">Data Scientist - Machine Learning, Time Series Forecasting &amp; MLOps</div>
   </div>
   <div class="contact">
     <a href="mailto:fazlur97@gmail.com">fazlur97@gmail.com</a>
@@ -455,19 +456,20 @@
 const data = {
   projects: {
     title: "Projects",
-    sub: "Selected data engineering and analytics builds — from live pipelines to work still in flight.",
+    sub: "Selected data engineering and analytics builds - from live pipelines to work still in flight.",
     items: [
       {
         title: "Manchester Airbnb Market Analytics Pipeline",
         meta: "Personal project",
-        img: "https://raw.githubusercontent.com/fazlur97/airbnb-pricing-intelligence/refs/heads/main/screenshoots/Page1.png",
+        status: null,
+        img: "https://raw.githubusercontent.com/fazlur97/airbnb-pricing-intelligence/main/screenshoots/Page_1.png",
         desc: "An end-to-end analytics pipeline built on real-world Manchester short-term rental data from Inside Airbnb. Raw listings are transformed through a layered dbt pipeline (staging → intermediate → mart), powered by DuckDB as the embedded analytical engine, and containerised in Docker for reproducibility. Parquet handles the interchange between DuckDB and the reporting layer, feeding an interactive Power BI dashboard covering pricing, occupancy, and neighbourhood-level trends.",
         tags: ["dbt", "DuckDB", "Docker", "Power BI", "Parquet"]
       },
       {
         title: "Stock Market Time Series Forecasting with Transformer Foundation Models",
         meta: "MSc Final Thesis · University of Manchester",
-        img: "https://raw.githubusercontent.com/fazlur97/StockForecasting_TSFM/refs/heads/main/Results/Portfolio_Strategy_Plots/long_only_strategy_by_window.png",
+        img: "https://raw.githubusercontent.com/fazlur97/StockForecasting_TSFM/refs/heads/main/Results/Portfolio_Strategy_Plots/long_short_strategy_by_window.png",
         link: "https://github.com/fazlur97/StockForecasting_TSFM",
         desc: "Built a robust time series forecasting MLOps pipeline using PyTorch and Jupyter, with feature engineering to evaluate the zero-shot accuracy of transformer-based foundation models (Chronos, TimeFM, UniTS) on stock market data.",
         tags: ["PyTorch", "Jupyter", "Chronos", "TimeFM", "UniTS", "MLOps"]
@@ -479,13 +481,13 @@ const data = {
     sub: "",
     items: [
       {
-        title: "MSc Data Science (Business and Management) — University of Manchester",
+        title: "MSc Data Science (Business and Management) - University of Manchester",
         meta: "Sep 2024 – Sep 2025 · Distinction",
         desc: "Built a robust time series forecasting MLOps pipeline using PyTorch, evaluating the zero-shot accuracy of transformer-based foundation models (Chronos, TimeFM, UniTS). Also designed an end-to-end predictive pipeline forecasting UK train passenger refund rates, applying logistic regression and correlation analysis before automating hyperparameter tuning via Azure AutoML.",
         tags: ["Data Science", "MLOps", "PyTorch", "Distinction"]
       },
       {
-        title: "BSc Computer Science — Universitas Padjadjaran (UNPAD)",
+        title: "BSc Computer Science - Universitas Padjadjaran (UNPAD)",
         meta: "Aug 2015 – Aug 2019 · Cum Laude",
         desc: "Specialisation in Artificial Intelligence. Developed a high-accuracy face recognition system using Python and Scikit-learn, implementing Support Vector Machines for multi-class classification, achieving 98.94% accuracy.",
         tags: ["Computer Science", "AI Specialisation", "Cum Laude"]
@@ -494,13 +496,13 @@ const data = {
   },
   experience: {
     title: "Experience",
-    sub: "Five years across data engineering, QA automation, and analytics — Indonesia to the UK.",
+    sub: "Five years across data engineering, QA automation, and analytics - Indonesia to the UK.",
     groups: [
       {
         label: "Professional Experience",
         items: [
           {
-            title: "Samsung Electronics — Software Engineer (Data & Quality)",
+            title: "Samsung Electronics - Software Engineer (Data & Quality)",
             meta: "Apr 2020 – Jun 2024 · Cikarang, Indonesia",
             desc: null,
             list: [
@@ -511,7 +513,7 @@ const data = {
             tags: ["Python", "Pandas", "SQL", "ETL", "QA automation"]
           },
           {
-            title: "Unilever — Software Engineer Intern",
+            title: "Unilever - Software Engineer Intern",
             meta: "Nov 2019 – Jan 2020 · Cikarang, Indonesia",
             desc: null,
             list: [
@@ -521,11 +523,11 @@ const data = {
             tags: ["Power BI", "CodeIgniter", "SQL", "OEE"]
           },
           {
-            title: "Indonesia Institute of Science (LIPI) — Data Engineer, Research Assistant",
+            title: "Indonesia Institute of Science (LIPI) - Data Engineer, Research Assistant",
             meta: "Jan 2018 – Mar 2018 · Bandung, Indonesia",
             desc: null,
             list: [
-              "Decoded raw Emotiv EEG headset data — the institute's first use of the device — and built Python (NumPy/SciPy) signal-cleaning and feature-engineering pipelines.",
+              "Decoded raw Emotiv EEG headset data (the institute's first use of the device) and built Python (NumPy/SciPy) signal-cleaning and feature-engineering pipelines.",
               "Fed processed EEG data into a TensorFlow model as a proof-of-concept for early Alzheimer's classification."
             ],
             tags: ["Python", "NumPy", "SciPy", "TensorFlow", "EEG"]
@@ -536,7 +538,7 @@ const data = {
         label: "Other",
         items: [
           {
-            title: "Practicum Assistant — Universitas Padjadjaran",
+            title: "Practicum Assistant - Universitas Padjadjaran",
             meta: "2016 – Aug 2019 · Bandung, Indonesia",
             desc: null,
             list: [
@@ -547,7 +549,7 @@ const data = {
             tags: ["Teaching Assistant", "AI", "Robotics", "OOP"]
           },
           {
-            title: "Lead of Talent and Interest Development — Informatics Student Association",
+            title: "Lead of Talent and Interest Development - Informatics Student Association",
             meta: "2016 – 2017 · Universitas Padjadjaran",
             desc: null,
             list: [
@@ -566,7 +568,7 @@ const data = {
     sub: "",
     items: [
       {
-        title: "Semi-finalist — Hult Prize, Norway",
+        title: "Semi-finalist - Hult Prize, Norway",
         meta: "2019",
         desc: "Selected from 200,000 global teams to reach the semi-final of the international social business competition. Led technical architecture and UI/UX design for the team's mobile MVP as Lead Developer, and pitched the solution to global judges.",
         tags: ["Lead Developer", "Mobile MVP", "Pitching"]
@@ -574,7 +576,7 @@ const data = {
       {
         title: "Sensorless Synchronous Motors Classification Using Random Forest and Linear Support Vector Classifier",
         meta: "Publication · October 2018",
-        desc: "IOP Conference Series: Earth and Environmental Science, Volume 248. First-author paper — designed and ran all experiments independently, applying Random Forest and Linear SVM to sensorless motor classification.",
+        desc: "IOP Conference Series: Earth and Environmental Science, Volume 248. First-author paper - designed and ran all experiments independently, applying Random Forest and Linear SVM to sensorless motor classification.",
         tags: ["Random Forest", "SVM", "First author"]
       }
     ]
@@ -609,13 +611,13 @@ const data = {
 const timeline = [
   { date:"Jul 2026", type:"Project", title:"AWS RAG Pipeline", desc:"Started building a retrieval-augmented generation pipeline on AWS (S3, Lambda, EventBridge, Bedrock). In progress.", inProgress:true },
   { date:"May 2026", type:"Project", title:"Manchester Airbnb Market Analytics Pipeline", desc:"Built an end-to-end dbt + DuckDB pipeline on Manchester Airbnb listings, surfaced in an interactive Power BI dashboard." },
-  { date:"Sep 2024", type:"Education", title:"MSc Data Science — University of Manchester", desc:"Distinction. Sep 2024 – Sep 2025. Built transformer-based forecasting pipelines and an AutoML predictive pipeline." },
-  { date:"Apr 2020", type:"Experience", title:"Samsung Electronics — Software Engineer (Data & Quality)", desc:"Apr 2020 – Jun 2024. Automated release-data pipelines and built defect diagnostics across a 70,000+ test case database." },
-  { date:"Nov 2019", type:"Experience", title:"Unilever — Software Engineer Intern", desc:"Nov 2019 – Jan 2020. Built a Power BI defects dashboard and an internal CRUD web app for manufacturing issue tracking." },
-  { date:"Apr 2019", type:"Achievement", title:"Semi-finalist — Hult Prize, Norway", desc:"Selected from 200,000 global teams. Led technical architecture and UI/UX for the team's mobile MVP as Lead Developer." },
+  { date:"Sep 2024", type:"Education", title:"MSc Data Science - University of Manchester", desc:"Distinction. Sep 2024 – Sep 2025. Built transformer-based forecasting pipelines and an AutoML predictive pipeline." },
+  { date:"Apr 2020", type:"Experience", title:"Samsung Electronics - Software Engineer (Data & Quality)", desc:"Apr 2020 – Jun 2024. Automated release-data pipelines and built defect diagnostics across a 70,000+ test case database." },
+  { date:"Nov 2019", type:"Experience", title:"Unilever - Software Engineer Intern", desc:"Nov 2019 – Jan 2020. Built a Power BI defects dashboard and an internal CRUD web app for manufacturing issue tracking." },
+  { date:"Apr 2019", type:"Achievement", title:"Semi-finalist - Hult Prize, Norway", desc:"Selected from 200,000 global teams. Led technical architecture and UI/UX for the team's mobile MVP as Lead Developer." },
   { date:"Oct 2018", type:"Publication", title:"IOP Conference Series Paper", desc:"First-author paper on sensorless synchronous motor classification using Random Forest and Linear SVM." },
-  { date:"Jan 2018", type:"Experience", title:"LIPI — Data Engineer, Research Assistant", desc:"Jan – Mar 2018. Built EEG signal-processing pipelines for an early Alzheimer's classification proof of concept." },
-  { date:"Aug 2015", type:"Education", title:"BSc Computer Science — Universitas Padjadjaran", desc:"Cum Laude. Aug 2015 – Aug 2019. Specialization in Artificial Intelligence." }
+  { date:"Jan 2018", type:"Experience", title:"LIPI - Data Engineer, Research Assistant", desc:"Jan – Mar 2018. Built EEG signal-processing pipelines for an early Alzheimer's classification proof of concept." },
+  { date:"Aug 2015", type:"Education", title:"BSc Computer Science - Universitas Padjadjaran", desc:"Cum Laude. Aug 2015 – Aug 2019. Specialization in Artificial Intelligence." }
 ];
 
 const main = document.getElementById('main-content');
@@ -642,7 +644,7 @@ function render(sectionKey){
     main.innerHTML = `
       <p class="breadcrumb">~/faz/<span>timeline</span></p>
       <h1 class="section-title">Timeline</h1>
-      <p class="section-sub">Everything below, laid out chronologically — most recent first.</p>
+      <p class="section-sub">Everything below, laid out chronologically - most recent first.</p>
       <div class="timeline fade">${rows}</div>
     `;
     return;
